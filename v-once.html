@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>v-once VueJ</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+	<body>
+		<div id="app">
+			<h1 v-once>{{ name }}</h1>
+			<input type="text" v-model:value="name">
+			<p>{{ name }}</p>
+		</div>
+
+		<script src="https://unpkg.com/vue"></script>
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					name: 'EspecializaTI + Vue'
+				}
+			});
+		</script>
+	</body>
+</html>

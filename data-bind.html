@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Data Bind VueJ</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+	<body>
+		<div id="app">
+			<h1>{{ title }}</h1>
+			<p>{{ description }}</p>
+			<p>{{ isActive ? 'Ativo' : 'Nao Ativo' }}</p>
+			<a v-bind:href="url" :title="textAcademy">{{ textAcademy }}</a>
+		</div>
+
+		<script src="https://unpkg.com/vue"></script>
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					title: "Meu título",
+					description: "Descricao",
+					isActive: true,
+					url: 'https://academy.especializati.com.br',
+					textAcademy: 'EspecializaTi Academy'
+				}
+			});
+		</script>
+	</body>
+</html>

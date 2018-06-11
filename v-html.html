@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>v-html VueJ</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+	<body>
+		<div id="app">
+			<h1>{{ title }}</h1>
+			<div v-html="description">
+			</div>
+		</div>
+
+		<script src="https://unpkg.com/vue"></script>
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					title: 'Tutorial Vue JS',
+					description: '<strong>Descricao</strong>'
+				}
+			});
+		</script>
+	</body>
+</html>

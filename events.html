@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>v-once VueJ</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+	<body>
+		<div id="app">
+			<input type="text" v-on:keyup="count++">
+			<p>{{ count }}</p>
+
+			<br>
+
+			<button v-on:click="count++">Incrementar</button>
+			{{ count }}
+			<button @click="count--">Decrementar</button>
+		</div>
+
+		<script src="https://unpkg.com/vue"></script>
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					count: 0
+				}
+			});
+		</script>
+	</body>
+</html>
