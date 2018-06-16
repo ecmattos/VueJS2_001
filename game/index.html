@@ -6,22 +6,85 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+		<link rel="stylesheet" href="css/style.css">
+
 		<link rel="shortcut icon" href="assets/favicon.ico" type="image/png">
 	</head>
 
 	<body>
-		<div class="container">
-			<div class="col-6">
-				<img src="assets/player1.png" alt="Jogador 1">
-				<p>Player 1</p>
+		<div class="container text-center" id="app">	
+			<h1 class="title">Jogo 21 em VueJS 2</h1>		
+			<div class="row"> 
+				<div :class="['col-6', playerActived == 1 ? 'active' : '']">
+					<img src="assets/player1.png" alt="Jogador 1">
+					<p>Player 1</p>
+					<p><strong>Pontos:</strong>{{ playerOne.points }}</p>
+				</div>
+				<div :class="['col-6', playerActived == 2 ? 'active' : '']">
+					<img src="assets/player2.png" alt="Jogador 2">
+					<p>Player 2</p>
+					<p><strong>Pontos:</strong>{{ playerTwo.points }}</p>
+				</div>
+				<div class="controls col">
+					<a href="#" class="btn btn-success" @click.prevent="changePlayer">Pular</a>
+					<a href="" class="btn btn-primary">Finalizar</a>
+					<a href="" class="btn btn-danger">Resetar</a>
+				</div>
 			</div>
-			<div class="col-6">
-				<img src="assets/player2.png" alt="Jogador 2">
-				<p>Player 2</p>
+
+			<hr>
+
+			<div class="row"> 
+				<div class="col-6">
+					<a href="#" @click.prevent="selectedCart">
+						<img src="assets/baralho-cartas.png" alt="Baralho" class="carts">
+					</a>
+				</div>
+				<div class="col-6">
+					<div v-if="cartSelected != ''">
+						<img :src="'assets/carts/' + cartSelected + '.png'" alt="Carta" class="carts">
+					</div>
+				</div>
 			</div>
 		</div>
 
 		<script src="./vue.js"></script>
+
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					playerActived: 2,
+					playerOne: {
+						points: 0
+					},
+					playerTwo: {
+						points: 0
+					},
+					cartSelected: ''
+				},
+				methods: {
+					changePlayer() {
+						this.playerActived = this.playerActived == 1 ? 2 : 1					
+					},
+					selectedCart(){
+						this.cartSelected = Math.floor((Math.random()*13)+1)
+
+						if(this.playerActived == 1)
+							this.playerOne.points += this.cartSelected
+
+						if(this.playerActived == 2)
+							this.playerTwo.points += this.cartSelected
+
+						if(this.playerOne.points >= 21)
+							alert()
+					},
+					finishGame(){
+
+					}
+				}
+			})
+		</script>
 		
 	</body>
 </html>
