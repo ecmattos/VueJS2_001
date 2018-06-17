@@ -21,3 +21,7 @@ img.carts {
 img.cart {
 	max-width: 160px;
 }
+
+img.carts_thumbs {
+	max-width: 60px;
+}
